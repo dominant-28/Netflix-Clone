@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>.container{width: 80vw;background-color: aqua;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    border: 10px solid;  
+
+    }
+     .containerchild{
+        height: 100px;
+        width: 50vw;
+        background-color: antiquewhite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 10px solid;
+    }
+    .child{
+        height: 50px;
+        background-color: blue;
+        width: 30vw;
+        text-align: center;
+    font-weight: bold;
+    border: 10px solid;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container" >
+    <div class="containerchild">
+<div class="child">
+    I am child
+</div>
+    </div>
+
+    </div>
+
+    <script >
+        document.querySelector(".containerchild").addEventListener("click",(e)=>{ e.stopPropagation()
+            alert("childcontainer was clicked")
+        })
+        document.querySelector(".child").addEventListener("click",(e)=>{
+            alert("child was clicked")
+            e.stopPropagation()
+        })
+        document.querySelector(".container").addEventListener("click",(e)=>{
+            alert("container was clicked")
+            e.stopPropagation()
+        })
+        setInterval(()=>{
+            let random=Math.random()
+            if(random<0.3){
+                document.querySelector(".containerchild").style.backgroundColor="red"
+            }
+            else if(random<0.6){
+                document.querySelector(".containerchild").style.backgroundColor="black"
+
+            }
+            else{
+                document.querySelector(".containerchild").style.backgroundColor="green"
+            }
+        },1000)
+    </script>
+</body>
+</html>

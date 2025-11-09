@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Banner Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .instructions {
+            color: #00ffff;
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .instructions h2 {
+            margin-top: 0;
+            color: #fff;
+        }
+
+        .instructions p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        #banner {
+            width: 1584px;
+            height: 396px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+        }
+
+        .grid-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .glow-orb-1 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.15) 0%, transparent 70%);
+            top: -200px;
+            left: 100px;
+            border-radius: 50%;
+        }
+
+        .glow-orb-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 0, 255, 0.12) 0%, transparent 70%);
+            bottom: -150px;
+            right: 200px;
+            border-radius: 50%;
+        }
+
+        .circuit-line-1 {
+            position: absolute;
+            width: 300px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            top: 80px;
+            left: 50px;
+            opacity: 0.4;
+        }
+
+        .circuit-line-2 {
+            position: absolute;
+            width: 250px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff00ff, transparent);
+            bottom: 100px;
+            right: 100px;
+            opacity: 0.3;
+        }
+
+        .circuit-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #00ffff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00ffff;
+        }
+
+        .dot-1 { top: 77px; left: 200px; }
+        .dot-2 { bottom: 97px; right: 250px; background: #ff00ff; box-shadow: 0 0 10px #ff00ff; }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 80px;
+            justify-content: space-between;
+        }
+
+        .left-content {
+            flex: 1;
+        }
+
+        .name {
+            font-size: 72px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #00ffff, #ff00ff, #00ffff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #00ffff;
+            letter-spacing: 3px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .right-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .tech-icon {
+            font-size: 80px;
+            opacity: 0.15;
+            filter: drop-shadow(0 0 20px currentColor);
+        }
+
+        .icon-1 { color: #00ffff; }
+        .icon-2 { color: #ff00ff; }
+        .icon-3 { color: #00ff88; }
+
+        .accent-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff);
+            background-size: 200% auto;
+        }
+
+        .download-btn {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #00ffff, #00aaaa);
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+        }
+
+        .preview-label {
+            color: #888;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h2>🎨 Your LinkedIn Banner is Ready!</h2>
+        <p><strong>Perfect Dimensions:</strong> 1584 × 396 pixels (LinkedIn standard)</p>
+        <p><strong>How to Download:</strong> Click the button below to save your banner as a PNG image</p>
+        <p><strong>How to Upload to LinkedIn:</strong> Go to your LinkedIn profile → Click the camera icon on your banner area → Upload the downloaded image</p>
+    </div>
+
+    <div class="preview-label">Preview (Scroll to see full banner)</div>
+
+    <div id="banner">
+        <div class="grid-pattern"></div>
+        <div class="glow-orb-1"></div>
+        <div class="glow-orb-2"></div>
+        <div class="circuit-line-1"></div>
+        <div class="circuit-line-2"></div>
+        <div class="circuit-dot dot-1"></div>
+        <div class="circuit-dot dot-2"></div>
+
+        <div class="content-wrapper">
+            <div class="left-content">
+                <div class="name">SOHAM</div>
+                <div class="tagline">Tech Enthusiast & Builder</div>
+                <div class="subtitle">Innovate • Create • Inspire</div>
+            </div>
+            <div class="right-content">
+                <div class="tech-icon icon-1">💻</div>
+                <div class="tech-icon icon-2">⚡</div>
+                <div class="tech-icon icon-3">🚀</div>
+            </div>
+        </div>
+
+        <div class="accent-line"></div>
+    </div>
+
+    <button class="download-btn" onclick="downloadBanner()">Download Banner</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        async function downloadBanner() {
+            const banner = document.getElementById('banner');
+            const button = document.querySelector('.download-btn');
+            
+            button.textContent = 'Generating...';
+            button.disabled = true;
+
+            try {
+                const canvas = await html2canvas(banner, {
+                    scale: 2,
+                    backgroundColor: null,
+                    logging: false,
+                    width: 1584,
+                    height: 396
+                });
+
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.download = 'soham-linkedin-banner.png';
+                    link.href = url;
+                    link.click();
+                    URL.revokeObjectURL(url);
+
+                    button.textContent = 'Download Banner';
+                    button.disabled = false;
+                }, 'image/png');
+            } catch (error) {
+                console.error('Error generating banner:', error);
+                button.textContent = 'Download Banner';
+                button.disabled = false;
+                alert('Error generating banner. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>
